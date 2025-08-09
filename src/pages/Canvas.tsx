@@ -70,8 +70,8 @@ declare module '@chakra-ui/react' {
   }
 }
 
-const NFT_STORAGE_TOKEN = '417423a1.d5f6ce92906b4532823e9ba90de0f930';
-const LIGHTHOUSE_API_KEY = '18bd9f03.fe6f22c24a8541fe86f92c0490ec4537';
+const NFT_STORAGE_TOKEN = process.env.NFT_STORAGE_TOKEN || '';
+const LIGHTHOUSE_API_KEY = process.env.LIGHTHOUSE_API_KEY || '';
 
 const Canvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -269,8 +269,8 @@ const Canvas: React.FC = () => {
                   chainId: '0x2105',
                   chainName: 'Base',
                   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-                  rpcUrls: ['https://mainnet.base.org'],
-                  blockExplorerUrls: ['https://basescan.org'],
+                  rpcUrls: [process.env.RPC_URL || ''],
+                  blockExplorerUrls: [process.env.BLOCK_EXPLORER_URL || ''],
                 },
               ],
             });

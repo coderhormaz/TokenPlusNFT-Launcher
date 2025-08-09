@@ -88,7 +88,7 @@ const CreateToken: React.FC = () => {
             <Text color={colorMode === 'dark' ? 'whiteAlpha.900' : 'gray.800'}>
               View on Base Explorer:{' '}
               <Link
-                href={`https://basescan.org/token/${tokenAddress}`}
+                href={`${process.env.BLOCK_EXPLORER_URL}/token/${tokenAddress}`}
                 isExternal
                 color="blue.500"
                 _hover={{

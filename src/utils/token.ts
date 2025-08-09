@@ -20,7 +20,7 @@ export const TOKEN_ABI = [
 ];
 
 // Token Factory contract address on Base
-const TOKEN_FACTORY_ADDRESS = '0xc89cE453b86cDEfFB56Db460496fB0121fe2C43F';
+const TOKEN_FACTORY_ADDRESS = process.env.TOKEN_FACTORY_ADDRESS || '';
 
 export const deployToken = async (
   provider: Web3Provider,

@@ -241,7 +241,7 @@ const MyCollection: React.FC = () => {
                         </Text>
                       </Box>
                       <Link
-                        href={`https://basescan.org/nft/${nft.contractAddress}/${nft.tokenId}`}
+                        href={`${process.env.BLOCK_EXPLORER_URL}/nft/${nft.contractAddress}/${nft.tokenId}`}
                         isExternal
                         color="blue.500"
                         fontWeight="medium"

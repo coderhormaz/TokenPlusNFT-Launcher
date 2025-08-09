@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = '0x272787Fe24C7F618799F5c15B731b673ada17db9';
+export const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || '';
 
 export const NETWORK_CONFIG = {
   chainId: '0x2105', // 8453 in hex
@@ -8,8 +8,8 @@ export const NETWORK_CONFIG = {
     symbol: 'ETH',
     decimals: 18,
   },
-  rpcUrls: ['https://mainnet.base.org'],
-  blockExplorerUrls: ['https://basescan.org'],
+  rpcUrls: [process.env.RPC_URL || ''],
+  blockExplorerUrls: [process.env.BLOCK_EXPLORER_URL || ''],
 };
 
-export const IPFS_GATEWAY = 'https://ipfs.io/ipfs/'; 
+export const IPFS_GATEWAY = process.env.IPFS_GATEWAY || 'https://ipfs.io/ipfs/'; 
