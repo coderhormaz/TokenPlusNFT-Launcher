@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -10,7 +9,6 @@ import {
   Input,
   Text,
   VStack,
-  HStack,
   useToast,
   useColorMode,
   NumberInput,
@@ -39,7 +37,6 @@ const FieldWrapper = ({ label, helper, children }: { label: string; helper?: str
 };
 
 const CreateToken: React.FC = () => {
-  const navigate = useNavigate();
   const { account, active: isActive, library: provider } = useWeb3React<Web3Provider>();
   const [name, setName] = useState('');
   const [symbol, setSymbol] = useState('');

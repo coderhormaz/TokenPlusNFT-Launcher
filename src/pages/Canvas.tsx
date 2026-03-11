@@ -5,7 +5,6 @@ import {
   Flex,
   IconButton,
   Input,
-  Tooltip,
   useToast,
   Modal,
   ModalOverlay,
@@ -23,13 +22,11 @@ import {
   SliderThumb,
   Text,
   VStack,
-  Container,
 } from '@chakra-ui/react';
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import { mintNFT } from '../utils/contract';
-import { isSepoliaChain, SEPOLIA_CHAIN_ID } from '../utils/chain';
-import { NFTStorage, File as NFTFile } from 'nft.storage';
+import { isSepoliaChain } from '../utils/chain';
 import lighthouse from '@lighthouse-web3/sdk';
 
 declare global {
@@ -38,28 +35,9 @@ declare global {
   }
 }
 
-interface Point {
-  x: number;
-  y: number;
-}
-
 interface HistoryItem {
   imageData: ImageData;
   type: 'draw' | 'image';
-}
-
-// Add type definitions for event handlers
-interface ChangeEvent<T = Element> {
-  target: EventTarget & T;
-}
-
-interface EventTarget {
-  value: string;
-}
-
-interface MouseEvent<T = Element> {
-  clientX: number;
-  clientY: number;
 }
 
 // Add type definitions for Chakra UI components
@@ -70,7 +48,6 @@ declare module '@chakra-ui/react' {
   }
 }
 
-const NFT_STORAGE_TOKEN = process.env.NFT_STORAGE_TOKEN || '';
 const LIGHTHOUSE_API_KEY = process.env.LIGHTHOUSE_API_KEY || '';
 
 const Canvas: React.FC = () => {
@@ -104,7 +81,7 @@ const Canvas: React.FC = () => {
     if (account && provider) {
       walletToastShown.current = false;
     }
-  }, [account, isActive, provider, toast]);
+  }, [account, isActive, provider, toast, walletToastShown]);
 
   const saveToHistory = () => {
     const canvas = canvasRef.current;

@@ -16,9 +16,6 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import { injected } from '../utils/connectors';
-import { motion } from 'framer-motion';
-
-const MotionBox = motion(Box);
 
 const NavLink = ({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: () => void }) => {
   const location = useLocation();

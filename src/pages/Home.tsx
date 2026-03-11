@@ -9,11 +9,10 @@ import {
   HStack,
   useColorMode,
   SimpleGrid,
-  Icon,
   Badge,
 } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import { EditIcon, ViewIcon, RepeatIcon, ArrowForwardIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 const GlassCard = ({ children, ...props }: any) => {
   const { colorMode } = useColorMode();

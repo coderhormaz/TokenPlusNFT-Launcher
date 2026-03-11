@@ -17,7 +17,6 @@ import {
 } from '@chakra-ui/react';
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
-import { ethers } from 'ethers';
 import { getOwnedNFTs, getTokenURI } from '../utils/contract';
 import { CONTRACT_ADDRESS as NFT_CONTRACT_ADDRESS } from '../config';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
