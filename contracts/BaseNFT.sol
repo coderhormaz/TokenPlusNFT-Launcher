@@ -1,36 +1,29 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract BaseNFT is ERC721, Ownable {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    uint256 private _tokenIdCounter;
 
     // Mapping from token ID to token URI
     mapping(uint256 => string) private _tokenURIs;
 
-    constructor() ERC721("Base NFT Creator", "BNC") {}
+    constructor() ERC721("Sepolia NFT Creator", "SNC") Ownable(msg.sender) {}
 
-    function mint(address recipient, string memory tokenURI) public returns (uint256) {
-        _tokenIds.increment();
-        uint256 newTokenId = _tokenIds.current();
+    function mint(address recipient, string memory _tokenURI) public returns (uint256) {
+        _tokenIdCounter++;
+        uint256 newTokenId = _tokenIdCounter;
 
         _mint(recipient, newTokenId);
-        _setTokenURI(newTokenId, tokenURI);
+        _tokenURIs[newTokenId] = _tokenURI;
 
         return newTokenId;
     }
 
-    function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal {
-        require(_exists(tokenId), "URI set of nonexistent token");
-        _tokenURIs[tokenId] = _tokenURI;
-    }
-
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(_exists(tokenId), "URI query for nonexistent token");
+        require(_ownerOf(tokenId) != address(0), "URI query for nonexistent token");
         return _tokenURIs[tokenId];
     }
 } 

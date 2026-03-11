@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -12,10 +12,10 @@ contract BaseToken is ERC20, Ownable {
         string memory symbol,
         uint256 initialSupply,
         address recipient,
-        string memory logoURI
-    ) ERC20(name, symbol) {
+        string memory logo
+    ) ERC20(name, symbol) Ownable(msg.sender) {
         _mint(recipient, initialSupply * 10**decimals());
-        _logoURI = logoURI;
+        _logoURI = logo;
     }
 
     function logoURI() public view returns (string memory) {

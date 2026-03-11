@@ -19,8 +19,8 @@ export const TOKEN_ABI = [
   'function transferFrom(address from, address to, uint256 amount) public returns (bool)'
 ];
 
-// Token Factory contract address on Base
-const TOKEN_FACTORY_ADDRESS = process.env.TOKEN_FACTORY_ADDRESS || '';
+// Token Factory contract address on Sepolia
+const TOKEN_FACTORY_ADDRESS = process.env.TOKEN_FACTORY_ADDRESS || '0x052bb302445125D0d090dA8c5Fb3A7Cb40229e44';
 
 export const deployToken = async (
   provider: Web3Provider,

@@ -1,6 +1,6 @@
-# Base NFT Creator
+# Sepolia NFT Creator
 
-A decentralized application (DApp) for creating and minting NFTs on the Base blockchain. This application provides a full-featured drawing board with various tools and the ability to mint your creations as NFTs.
+A decentralized application (DApp) for creating and minting NFTs on the Ethereum Sepolia testnet. This application provides a full-featured drawing board with various tools and the ability to mint your creations as NFTs.
 
 ## Features
 
@@ -11,14 +11,14 @@ A decentralized application (DApp) for creating and minting NFTs on the Base blo
   - Line width adjustment
   - Undo/Redo functionality
   - Image upload and manipulation
-- Mint your creations as NFTs on Base
+- Mint your creations as NFTs on Ethereum Sepolia
 - View your NFT collection
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
-- MetaMask wallet with Base network configured
-- Some ETH on Base for gas fees
+- MetaMask wallet with Ethereum Sepolia network configured
+- Some Sepolia ETH for gas fees (get from a faucet)
 
 ## Installation
 
@@ -33,12 +33,12 @@ cd base-nft-creator
 npm install
 ```
 
-3. Configure Base network in MetaMask:
-   - Network Name: Base
-   - RPC URL: https://mainnet.base.org
-   - Chain ID: 8453
+3. Configure Ethereum Sepolia network in MetaMask:
+   - Network Name: Sepolia
+   - RPC URL: https://rpc.sepolia.org
+   - Chain ID: 11155111
    - Currency Symbol: ETH
-   - Block Explorer URL: https://basescan.org
+   - Block Explorer URL: https://sepolia.etherscan.io
 
 ## Development
 
@@ -58,7 +58,7 @@ PRIVATE_KEY=your_private_key_here
 
 2. Deploy the smart contract:
 ```bash
-npx hardhat run scripts/deploy.js --network base
+npx hardhat run scripts/deploy.js --network sepolia
 ```
 
 3. Update the contract address in `src/config.ts` with the deployed contract address.

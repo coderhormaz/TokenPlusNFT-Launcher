@@ -1,5 +1,5 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [8453, 84531], // Base Mainnet and Goerli Testnet
+  supportedChainIds: [11155111], // Ethereum Sepolia Testnet
 }); 

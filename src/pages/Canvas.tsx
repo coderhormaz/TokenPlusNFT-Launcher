@@ -28,7 +28,7 @@ import {
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import { mintNFT } from '../utils/contract';
-import { isBaseChain, BASE_CHAIN_ID } from '../utils/chain';
+import { isSepoliaChain, SEPOLIA_CHAIN_ID } from '../utils/chain';
 import { NFTStorage, File as NFTFile } from 'nft.storage';
 import lighthouse from '@lighthouse-web3/sdk';
 
@@ -250,13 +250,13 @@ const Canvas: React.FC = () => {
     return undefined;
   };
 
-  // Helper to switch to Base
-  const switchToBase = async () => {
+  // Helper to switch to Sepolia
+  const switchToSepolia = async () => {
     if (window.ethereum) {
       try {
         await window.ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x2105' }], // 8453 in hex
+          params: [{ chainId: '0xaa36a7' }], // 11155111 in hex
         });
       } catch (switchError: any) {
         // If the chain is not added, add it
@@ -266,8 +266,8 @@ const Canvas: React.FC = () => {
               method: 'wallet_addEthereumChain',
               params: [
                 {
-                  chainId: '0x2105',
-                  chainName: 'Base',
+                  chainId: '0xaa36a7',
+                  chainName: 'Sepolia',
                   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
                   rpcUrls: [process.env.RPC_URL || ''],
                   blockExplorerUrls: [process.env.BLOCK_EXPLORER_URL || ''],
@@ -293,14 +293,14 @@ const Canvas: React.FC = () => {
       return;
     }
     const chainId = getChainId();
-    if (!isBaseChain(chainId)) {
+    if (!isSepoliaChain(chainId)) {
       toast({
         title: 'Wrong Network',
         description: (
           <span>
-            Please switch to the Base network. <br />
-            <Button size="xs" colorScheme="blue" mt={2} onClick={switchToBase}>
-              Switch to Base
+            Please switch to the Sepolia network. <br />
+            <Button size="xs" colorScheme="blue" mt={2} onClick={switchToSepolia}>
+              Switch to Sepolia
             </Button>
           </span>
         ),
@@ -362,10 +362,10 @@ const Canvas: React.FC = () => {
 
       // Extra: Check network and contract before minting
       const network = await provider.getNetwork();
-      if (network.chainId !== 8453) {
+      if (network.chainId !== 11155111) {
         toast({
           title: 'Wrong Network',
-          description: 'Please switch to Base Mainnet in MetaMask.',
+          description: 'Please switch to Ethereum Sepolia in MetaMask.',
           status: 'error',
           duration: 7000,
           isClosable: true,
