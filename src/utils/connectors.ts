@@ -1,5 +1,4 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 
-export const injected = new InjectedConnector({
-  supportedChainIds: [11155111], // Ethereum Sepolia Testnet
-}); 
+// No chain restriction here — chain validation is handled in the UI after connection
+export const injected = new InjectedConnector({}); 
