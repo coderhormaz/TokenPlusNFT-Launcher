@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
       top={0}
       zIndex={1000}
       backdropFilter="blur(20px)"
-      WebkitBackdropFilter="blur(20px)"
+      sx={{ WebkitBackdropFilter: "blur(20px)" }}
       bg={navBg}
       borderBottom="1px solid"
       borderColor={colorMode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'}
